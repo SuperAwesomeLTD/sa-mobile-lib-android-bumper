@@ -2,6 +2,15 @@
 *.apk
 *.ap_
 
+app/
+build/
+wrapper/
+.gradle/
+local.properties
+sabumperpage/java_pid*
+java_pid*
+app/java_pid*
+
 # Files for the ART/Dalvik VM
 *.dex
 
