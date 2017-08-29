@@ -4,17 +4,17 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-public class SABumperBackground extends RelativeLayout {
+public class SABumperPageBackground extends RelativeLayout {
 
-    public SABumperBackground(Context context) {
+    public SABumperPageBackground(Context context) {
         super(context);
     }
 
-    public SABumperBackground(Context context, AttributeSet attrs) {
+    public SABumperPageBackground(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public SABumperBackground(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SABumperPageBackground(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

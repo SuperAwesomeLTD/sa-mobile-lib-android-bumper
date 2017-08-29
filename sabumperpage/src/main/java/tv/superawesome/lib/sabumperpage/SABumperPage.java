@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public class SABumperPage extends Activity {
@@ -60,7 +59,7 @@ public class SABumperPage extends Activity {
 
         //
         // background
-        SABumperBackground background = new SABumperBackground(this);
+        SABumperPageBackground background = new SABumperPageBackground(this);
         background.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         background.setBackground(new BitmapDrawable(getResources(), SABumperPageImageUtils.backgroundImage()));
 
