@@ -2,7 +2,6 @@
 *.apk
 *.ap_
 
-app/
 build/
 wrapper/
 .gradle/
