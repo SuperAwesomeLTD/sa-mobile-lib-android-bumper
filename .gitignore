@@ -3,7 +3,6 @@
 *.ap_
 
 build/
-wrapper/
 .gradle/
 local.properties
 sabumperpage/java_pid*
