@@ -30,9 +30,9 @@ public class SABumperPage extends Activity {
     private static final int SMALL_TEXT_ID = 0x212151;
     private static final int BIG_TEXT_ID = 0x212751;
 
-    private static final String defaultBigTextString = "You're now leaving this app.";
-    private static final String bigTextString = "You're now leaving:\n";
-    private static final String smallTextString = "A new site (which we don't own) will open in %ld seconds. Remember to stay safe online and ask an adult before buying anything!";
+    private static final String defaultBigTextString = "Bye! You’re now leaving this app.";
+    private static final String bigTextString = "Bye! You’re now leaving\n";
+    private static final String smallTextString = "A completely new site will open in %ld seconds. Remember to stay safe online and don’t share your username or password with anyone!";
 
     private static final int MAX_TIMER = 3;
 
