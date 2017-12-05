@@ -2,24 +2,18 @@ package tv.superawesome.lib.sabumperpage;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import java.net.URLEncoder;
 
 public class SABumperPage extends Activity {
 
@@ -31,8 +25,8 @@ public class SABumperPage extends Activity {
     private static final int BIG_TEXT_ID = 0x212751;
 
     private static final String defaultBigTextString = "Bye! You’re now leaving this app.";
-    private static final String bigTextString = "Bye! You’re now leaving\n";
-    private static final String smallTextString = "A completely new site will open in %ld seconds. Remember to stay safe online and don’t share your username or password with anyone!";
+    private static final String bigTextString = "Bye! You’re now leaving ";
+    private static final String smallTextString = "A new site will open in %ld seconds. Remember to stay safe online and don’t share your username or password with anyone!";
 
     private static final int MAX_TIMER = 3;
 
@@ -65,10 +59,7 @@ public class SABumperPage extends Activity {
 
         //
         // big logo
-        Drawable fullDrawable =
-                appIcon != null ? appIcon :
-                        new BitmapDrawable(getResources(), SABumperPageImageUtils.defaultLogo());
-
+        Drawable fullDrawable = appIcon;
         ImageView bigLogo = new ImageView(this);
         bigLogo.setId(BIG_LOGO_ID);
         bigLogo.setImageDrawable(fullDrawable);
@@ -87,12 +78,11 @@ public class SABumperPage extends Activity {
         smallLogo.setId(SMALL_LOGO_ID);
         smallLogo.setImageDrawable(new BitmapDrawable(getResources(), SABumperPageImageUtils.poweredByImage()));
         smallLogo.setBaselineAlignBottom(true);
-        smallLogo.setVisibility(appIcon != null ? View.VISIBLE : View.INVISIBLE);
 
         RelativeLayout.LayoutParams smallLogoLayout =
                 new RelativeLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
-                        (int)(density * 20));
+                        (int)(density * 24));
         smallLogoLayout.setMargins((int)(12 * density), (int)(12 * density), (int)(12 * density), (int)(12 * density));
         smallLogoLayout.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 
@@ -104,6 +94,7 @@ public class SABumperPage extends Activity {
         smallText.setId(SMALL_TEXT_ID);
         smallText.setText(smallTextString.replace("%ld", "" + MAX_TIMER));
         smallText.setTextColor(0xffffffff);
+        smallText.setTextSize(12);
         smallText.setGravity(Gravity.CENTER);
 
         RelativeLayout.LayoutParams smallTextLayout =
@@ -117,16 +108,12 @@ public class SABumperPage extends Activity {
 
         //
         // big text
-        String fullText = appName != null ?
-                (bigTextString + appName) :
-                (getAppLabel(this) != null ?
-                        (bigTextString + getAppLabel(this)) : defaultBigTextString);
-
+        String fullText = appName != null ? (bigTextString + appName) : defaultBigTextString;
         TextView bigText = new TextView(this);
         bigText.setId(BIG_TEXT_ID);
         bigText.setText(fullText);
         bigText.setTextColor(0xffffffff);
-        bigText.setTextSize(16);
+        bigText.setTextSize(14);
         bigText.setTypeface(null, Typeface.BOLD);
         bigText.setGravity(Gravity.CENTER);
 
@@ -192,21 +179,5 @@ public class SABumperPage extends Activity {
 
     public interface Interface {
         void didEndBumper();
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // Aux methods
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
-    private static String getAppLabel(Context context) {
-        try {
-            PackageManager packageManager = context.getPackageManager();
-            ApplicationInfo applicationInfo = packageManager.getApplicationInfo(context.getApplicationInfo().packageName, 0);
-            String name = (String) (applicationInfo != null ? packageManager.getApplicationLabel(applicationInfo) : "Unknown");
-            name = URLEncoder.encode(name, "UTF-8");
-            return name;
-        } catch (Exception e) {
-            return null;
-        }
     }
 }

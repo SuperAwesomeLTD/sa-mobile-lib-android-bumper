@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SABumperPage.overrideName("New name");
+        SABumperPage.overrideName("My app");
         SABumperPage.overrideLogo(getResources().getDrawable(R.drawable.kws_white_700));
         SABumperPage.setListener(new SABumperPage.Interface() {
             @Override
