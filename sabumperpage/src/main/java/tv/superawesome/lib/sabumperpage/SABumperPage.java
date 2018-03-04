@@ -144,7 +144,9 @@ public class SABumperPage extends Activity {
             public void run() {
 
                 if (countdown[0] <= 0) {
-                    listener.didEndBumper();
+                    if (listener != null) {
+                        listener.didEndBumper();
+                    }
                     SABumperPage.this.finish();
                 } else {
                     countdown[0]--;
@@ -158,7 +160,10 @@ public class SABumperPage extends Activity {
 
     @Override
     public void onBackPressed() {
-        // do nothing and disable the back button
+        if (handler != null && runnable != null) {
+            handler.removeCallbacks(runnable);
+        }
+        super.onBackPressed();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
